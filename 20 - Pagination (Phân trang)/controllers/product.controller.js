@@ -11,44 +11,63 @@ var perPage = 8;
 var maxPage = Math.ceil(dataGetFromFile.length / perPage);
 var pagination = [];
 
-var pageLeft = maxPage - page;
+var pagesRest = maxPage - page;
+// switch (page % 2) {
+//     case 0: 
+//     {
+//         pagination.push(page - 1);
+//         pagination.push(page);
+//         if (pagesRest) {
+//             pagination.push(page + 1);
+//         } else {
+//             pagination.push(0);
+//         }
+//     }
+//     break;
+//     default: 
+//     {
+//         switch (page % 3) {
+//             case 0:
+//                 {
+//                     for (var i = 2; i >= 0; i--) {
+//                         pagination.push(page - i);
+//                     }
+//                 }
+//                 break;
+//                 default: 
+//                 {
+//                     pagination.push(page);
+//                     if (pagesRest >= 1) {
+//                         pagination.push(page + 1);
+//                         if (pagesRest >= 2) {
+//                             pagination.push(page + 2);
+//                         } else {
+//                             pagination.push(0);
+//                         }
+//                     }
+//                 }
+//         }
+//     }
+// }
 
-switch (page % 2) {
-    case 0: 
-    {
-        pagination.push(page - 1);
-        pagination.push(page);
-        if (pageLeft) {
-            pagination.push(page + 1);
-        } else {
-            pagination.push(0);
+switch (page) {
+    case 1: 
+        for (var i = 1; i <= 3; i++) {
+            pagination.push(i);
         }
-    }
     break;
-    default: 
-    {
-        switch (page % 3) {
-            case 0:
-                {
-                    for (var i = 2; i >= 0; i--) {
-                        pagination.push(page - i);
-                    }
-                }
-                break;
-                default: 
-                {
-                    pagination.push(page);
-                    if (pageLeft >= 1) {
-                        pagination.push(page + 1);
-                        if (pageLeft >= 2) {
-                            pagination.push(page + 2);
-                        } else {
-                            pagination.push(0);
-                        }
-                    }
-                }
+    case maxPage:
+        {
+            for (var i = 0; i<3; i++){
+                pagination.push(page - i);
+            }
+            pagination.reverse();
         }
-    }
+        break;
+        default:
+                for (var i = -1; i < 2; i++) {
+                    pagination.push(page + i);
+                }
 }
 
 var begin = (page - 1) * perPage;
