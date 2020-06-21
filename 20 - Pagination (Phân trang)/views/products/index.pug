@@ -4,8 +4,8 @@ block content
     if products
         .row
             each product in products
-                .col-3
-                    .card.mb-2
+                .col-3.mb-3
+                    .card.h-100
                         img.car-img-top(src= product.image)
                         .card-body
                             h5.card-title= product.name
@@ -13,9 +13,9 @@ block content
                 
         nav
             ul.pagination.justify-content-center
-                li.page-item(class=((currentPage > 3) ? "d-block" : "d-none"))  
+                li.page-item(class=((currentPage > 2) ? "d-block" : "d-none"))  
                     a.page-link(href="/products") First Page
-                    
+
                 li.page-item(class=((pagination[0] === 1) ? "disabled" : ""))
                     a.page-link(href="/products?page=" + (currentPage - 1)) Previous
 
@@ -26,7 +26,7 @@ block content
                 li.page-item(class=((pagination[2] < maxPage) ? "" : "disabled"))
                     a.page-link(href="/products?page=" + ((currentPage + 1))) Next
 
-                li.page-item(class=((maxPage - currentPage > 2) ? "d-block" : "d-none"))
+                li.page-item(class=((maxPage - currentPage > 1) ? "d-block" : "d-none"))
                     a.page-link(href="/products?page=" + maxPage) Last Page
 
 
