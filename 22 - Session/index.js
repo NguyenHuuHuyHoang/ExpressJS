@@ -8,9 +8,10 @@ var cookieParser = require('cookie-parser');
 var userRoute = require('./routers/user.route');
 var authRoute = require('./routers/auth.route');
 var productRoute = require('./routers/product.route');
+var cartRoute = require ('./routers/cart.route');
 
 var authMiddleware = require ('./middlewares/auth.middleware');
-var sessionMiddleware = require('./middlewares/session.middleware');
+var sessionMiddleware = require ('./middlewares/session.middleware');
 
 var port = 3000;
 
@@ -41,8 +42,9 @@ app.get('/', function (req, res) {
 
 
 app.use('/users', authMiddleware.requireAuth, userRoute);
-app.use('/auth', authRoute)
+app.use('/auth', authRoute);
 app.use('/products', productRoute);
+app.use('/cart', cartRoute);
 app.use(sessionMiddleware);
 
 app.listen(port, () => console.log(`Example app listening on port ${port}`));

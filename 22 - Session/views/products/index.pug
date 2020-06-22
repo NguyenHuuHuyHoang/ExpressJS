@@ -7,11 +7,11 @@ block content
                 .col-3.mb-3
                     .card.h-100
                         img.car-img-top(src= product.image)
-                        .card-body.bg-light.border-bottom-0
+                        .card-body
                             h5.card-title= product.name
                             p.card-text= product.description
-                        .card-footer.border-top-0
-                            a.btn.btn-primary(href="/add/:" + product.id) Add to cart
+                        .card-footer
+                            a.btn.btn-primary(href="/cart/" + product.id) Add to cart
                 
         nav
             ul.pagination.justify-content-center

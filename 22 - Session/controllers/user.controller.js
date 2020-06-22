@@ -44,7 +44,7 @@ module.exports.view = function (req, res) {
 module.exports.postCreate = function (req, res) {
     req.body.id = shortId.generate();
     req.body.password = md5(req.body.password);
-    req.body.avatar = (req.file.destination+req.file.filename).split('/').slice(2).join('/');
+    req.body.avatar = req.file.filename;
     db.get('users').push(req.body).write();
     res.redirect('/users');
 };
