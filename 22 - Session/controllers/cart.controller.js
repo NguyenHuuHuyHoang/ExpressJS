@@ -14,7 +14,16 @@ module.exports.addCart = function(req, res) {
     var idItem = req.params.productId;
     var currentSessionId = req.signedCookies.sessionId;
     //Check idItem in sessionItem stored.
-    var dataCurrentSessionStored = db.get('sessionId').find({idItem : sessionId});
 
+    var count = db.get('sessions')
+    .find({id : currentSessionId})
+    .get("cart." + idItem , 0)
+    .value();
 
+    db.get('sessions')
+    .find({id : currentSessionId})
+    .set("cart." + idItem,  count + 1)
+    .write();
+
+    res.redirect('/products');
 }

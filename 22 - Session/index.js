@@ -43,7 +43,7 @@ app.get('/', function (req, res) {
 
 app.use('/users', authMiddleware.requireAuth, userRoute);
 app.use('/auth', authRoute);
-app.use('/products', productRoute);
+app.use('/products', sessionMiddleware, productRoute);
 app.use('/cart', cartRoute);
 app.use(sessionMiddleware);
 

@@ -2,17 +2,20 @@ var db = require('../db');
 var shortId = require('shortId');
 
 module.exports = function (req, res, next ){
-    var sessionId = shortId.generate();
+    
     if (!req.signedCookies.sessionId) {
-        res.cookie('sessionId', sessionId, {
-            signed: true
-        });
-        db.get('sessionId')
+        var sessionId = shortId.generate();
+        
+        db.get('sessions')
         .push({
-            id: sessionId
+            "id": sessionId
         })
         .write();
 
+        res.cookie('sessionId', sessionId, {
+            signed: true
+        });
     }
+
     next();
 }
