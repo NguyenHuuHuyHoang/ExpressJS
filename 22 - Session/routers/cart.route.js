@@ -3,7 +3,8 @@ var route = express.Router();
 
 var controller = require('../controllers/cart.controller');
 
+route.get('/',)
 
-route.get('/addCard/:productId', controller.checkSessionId, controller.addCart);
+route.get('/addCart/:productId/:currentPage', controller.checkSessionId, controller.addCart);
 
 module.exports = route;

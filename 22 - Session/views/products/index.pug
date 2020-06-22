@@ -11,7 +11,7 @@ block content
                             h5.card-title= product.name
                             p.card-text= product.description
                         .card-footer
-                            a.btn.btn-primary(href="/cart/addCart/" + product.id) Add to cart
+                            a.btn.btn-primary(href="/cart/addCart/" + product.id+'/'+ currentPage) Add to cart
                 
         nav
             ul.pagination.justify-content-center

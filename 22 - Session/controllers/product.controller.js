@@ -72,6 +72,7 @@ var begin = (page - 1) * itemsPerPage;
 // // var end = itemsPerPage * page;
 
     res.render('products/index', {
+        cartItems: res.locals.cartItems,
         currentPage : page,
         maxPage : maxPage,
         pagination: pagination,
