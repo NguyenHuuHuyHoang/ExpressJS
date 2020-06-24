@@ -36,7 +36,9 @@ module.exports.search = async function (req, res) {
 };
 
 module.exports.create = function (req, res) {
-    res.render('users/create')
+    res.render('users/create', {
+        csrfToken: req.csrfToken()
+    });
 };
 
 module.exports.view = async function (req, res) {
@@ -48,6 +50,7 @@ module.exports.view = async function (req, res) {
 };
 
 module.exports.postCreate = function (req, res) {
+
     req.body.password = md5(req.body.password);
     req.body.avatar = req.file.path.split("\\").slice(1).join('/');
     // db.get('users').push(req.body).write();
